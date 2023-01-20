@@ -18,6 +18,7 @@ class TelegramResultError(Exception):
     raised when telegram returns "ok" as false
     """
 
+
 class Context(
     BotAPI,
     GamesAPI,
@@ -39,6 +40,7 @@ class Context(
         self.dispatcher = dispatcher
         self.url = UrlManager(token)
         self.connection = connection if connection else HTTPConnection()
+        self._set_current_context()
 
     async def _get (self,*,url = None,headers = None):
         """
@@ -69,7 +71,27 @@ class Context(
             return res["result"]
         error_code,desc = res["error_code"],res["description"]
         raise TelegramResultError(f"Error Code <{error_code}>:: {desc}")
+    
+    def _set_current_context (self):
+        """
+        This method sets the _current_context variable to self
+        """
+        global _current_context
+        _current_context = self
 
+"""
+_current_context is an internal variable holding the reference to the current bot context.
+It is set during the instantiation of the bot context and it's used by telegram objects
+to offer extra functionality over the object.
+"""
+_current_context:Context = None
+
+def get_current_context ():
+    """
+    this function returns  _current_context.
+    """
+
+    return _current_context
 
 class MessageBox:
     """
