@@ -13,12 +13,12 @@ class HTTPConnection(HTTP):
         
         self.client = httpx.AsyncClient()
 
-    async def get (self,url:str,headers:dict = None) -> dict:
+    async def get (self,url:str,params:dict = None) -> dict:
         """
         concrete implementation of get
         """
-        if headers:
-            response = await self.client.get(url,headers = headers)
+        if params:
+            response = await self.client.get(url,params = params)
         response = await self.client.get(url)
         return response.content
 
