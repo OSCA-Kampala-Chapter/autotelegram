@@ -6,6 +6,14 @@ It is a spin-off of the autobot projects which focuses on helping you build tele
 Autobot provides a pythonic wrapper around the telegram bot API to enable you make queries 
 to you telegram bot directly from python code
 
+### Installation
+Installing autotelegram on your system is a s easy as pip installing it. Just copy and paste
+the snippet below in your command line
+
+```
+pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.0.1b2.zip
+```
+
 ### Tutorial
 To understand how autotelegram works, let us build a simple echo bot that echos back what the user
 sends to it.
