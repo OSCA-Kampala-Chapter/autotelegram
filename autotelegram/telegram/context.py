@@ -34,10 +34,13 @@ class Context(
     def __init__ (self,
         token,*,
         connection = None,
-        dispatcher = None
+        offset_autoincrement = True
     ):
-        
-        self.dispatcher = dispatcher
+        """
+        Context acts as the representation of the telegram bot
+        """
+        self.offset_autoincrement = offset_autoincrement
+        self._latest_update = 0
         self.url = UrlManager(token)
         self.connection = connection if connection else HTTPConnection()
         self._set_current_context()
@@ -78,6 +81,27 @@ class Context(
         """
         global _current_context
         _current_context = self
+
+    async def get_updates (self,**kwargs):
+        """
+        get updates from telegram. Automatically increases offset on next request
+        """
+        if self.offset_autoincrement:
+            if "offset" in kwargs:
+                kwargs.pop("offset")
+            if self._latest_update:
+                updates = await super().get_updates(offset = str(self._latest_update + 1),**kwargs)
+                for update in updates:
+                    if ((uid := update.update_id) > self._latest_update):
+                        self._latest_update = uid
+                return updates
+            else:
+                updates = await super().get_updates(**kwargs)
+                return updates
+        else:
+            updates = await super().get_updates(**kwargs)
+            return updates
+
 
 """
 _current_context is an internal variable holding the reference to the current bot context.
