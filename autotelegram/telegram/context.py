@@ -86,17 +86,21 @@ class Context(
         """
         get updates from telegram. Automatically increases offset on next request
         """
+        def update_updateid (updates):
+            for update in updates:
+                if ((uid := update.update_id) > self._latest_update):
+                    self._latest_update = uid
+
         if self.offset_autoincrement:
             if "offset" in kwargs:
                 kwargs.pop("offset")
             if self._latest_update:
                 updates = await super().get_updates(offset = str(self._latest_update + 1),**kwargs)
-                for update in updates:
-                    if ((uid := update.update_id) > self._latest_update):
-                        self._latest_update = uid
+                update_updateid(updates)
                 return updates
             else:
                 updates = await super().get_updates(**kwargs)
+                update_updateid(updates)
                 return updates
         else:
             updates = await super().get_updates(**kwargs)
