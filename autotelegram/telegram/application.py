@@ -36,6 +36,32 @@ class Application (object):
         except KeyError:
             raise ValueError(f"command {command} was not registered.")
         
+    async def _runner (self,callback,wait_for):
+
+        while True:
+            updates = await self._context.get_updates()
+
+            for update in updates:
+                try:
+                    msg = update.message.text
+                    if msg.startswith("/"):
+                        try:
+                            cmd_handler = self._commandhandlers[msg]
+                            await cmd_handler(update,self._context)
+                        except KeyError:
+                            await callback(update,self._context)
+                    else:
+                        await callback(update,self._context)
+                except AttributeError:
+                    """
+                    message is None, so we assume there are other attributes such as
+                    callback query or poll so we call the callback to process the update
+                    """
+                    await callback(update,self._context)
+
+            await asyncio.sleep(wait_for)
+            continue
+        
 
     def run (self,callback,wait_for = 0,*,mode = None):
         """
@@ -49,31 +75,7 @@ class Application (object):
             mode: determines how to run the application. This argument is not used currently and 
             only left for future purposes.
         """
-        print("running now...")
-        async def runner ():
+        print("running now...") #add logging here
+        
 
-            while True:
-                updates = await self._context.get_updates()
-
-                for update in updates:
-                    try:
-                        msg = update.message.text
-                        if msg.startswith("/"):
-                            try:
-                                cmd_handler = self._commandhandlers[msg]
-                                await cmd_handler(update,self._context)
-                            except KeyError:
-                                await callback(update,self._context)
-                        else:
-                            await callback(update,self._context)
-                    except AttributeError:
-                        """
-                        message is None, so we assume there are other attributes such as
-                        callback query or poll so we call the callback to process the update
-                        """
-                        await callback(update,self._context)
-
-                await asyncio.sleep(wait_for)
-                continue
-
-        asyncio.run(runner())
+        asyncio.run(self._runner(callback,wait_for))

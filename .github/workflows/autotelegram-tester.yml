@@ -1,6 +1,6 @@
 # This workflow runs the autobot test suite againt python 3.10 and the major desktop operating systems.
 
-name: Autobot Tester
+name: Autotelegram Tester
 
 on: [pull_request,push]
 
@@ -13,4 +13,5 @@ jobs:
         with:
           python-version: "3.10"
       - run: python -c "import sys; print(sys.version)"
+      - run: pip3 install httpx
       - run: python "tests/test_inst.py"
