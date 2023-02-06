@@ -88,6 +88,14 @@ class Message(BaseObject):
     """
     
     def __init__ (self, message_id: int = None) -> None:
+        try:
+            from autotelegram.telegram.context import get_current_context
+        except Exception as e:
+            raise e
+        
+        self._current_context = get_current_context()
+
+        #telegram specific attributes
         self.message_id = message_id
         self.from_user: Optional[User] = None
         self.date: Optional[int] = None
@@ -142,6 +150,37 @@ class Message(BaseObject):
         self.video_chat_ended: Optional[VideoChatEnded] = None
         self.video_chat_participants_invited: Optional[VideoChatParticipantsInvited] = None
         self.reply_markup: Optional[InlineKeyboardMarkup] = None
+
+    async def reply_with_text (self,text,**kwargs):
+        """
+        Reply to a message that was send to the bot.
+        This is different from the `respond_with_text` method in that 
+        it will reply directly to the message sent.
+        Args:
+            text: The text message to reply with
+            **kwargs: These are the same kwargs passed to the send_message method.
+        """
+
+        await self._current_context.send_message(chat_id = self.chat.id,
+                                                 reply_to_message_id = self.message_id,
+                                                 text = text,
+                                                 **kwargs
+                                                 )
+        
+    async def respond_with_text (self,text,**kwargs):
+        """
+        Respond to a certain message in chat with a text message.
+        This is different from the `reply_with_text` method in that
+        it will just send a message to the chat without replying.
+        Args:
+            text: The text message to respond with.
+            **kwargs: These are the same kwargs passed to the send_message method
+        """
+
+        await self._current_context.send_message(chat_id = self.chat.id,
+                                                 text = text,
+                                                 **kwargs
+                                                 )
 
 class MessageAutoDeleteTimerChanged(BaseObject):
     """This object represents a service message about a change in auto-delete timer settings.
