@@ -983,3 +983,45 @@ class BotAPI:
         url = self.url.add_method("getUpdates")
         res = await self._get(url = url,headers = kwargs)
         return [self.parser.parse(update) for update in res]
+    
+    async def edit_message_text (self,**kwargs):
+        """
+        """
+        url = self.url.add_method("editMessageText")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res)
+    
+    async def edit_message_caption (self,**kwargs):
+        """
+        """
+        url = self.url.add_method("editMessageCaption")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res)
+    
+    async def edit_media_message (self,**kwargs):
+        """
+        """
+        url = self.url.add_method("editMediaMessage")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res)
+    
+    async def edit_message_reply_markup (self,**kwargs):
+        """
+        """
+        url = self.url.add_method("editMessageCaption")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res)
+    
+    async def stop_poll (self,**kwargs):
+        """
+        """
+        url = self.url.add_method("stopPoll")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res)
+    
+    async def delete_message (self,**kwargs):
+        """
+        """
+        url = self.url.add_method("deleteMessage")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res)
