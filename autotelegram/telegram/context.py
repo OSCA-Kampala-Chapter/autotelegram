@@ -17,6 +17,11 @@ class TelegramResultError(Exception):
     """
     raised when telegram returns "ok" as false
     """
+    def __init__ (self,err_code,desc):
+        
+        self.err_code = err_code
+        self.desc = desc
+        super().__init__(f"Error Code <{err_code}>:: {desc}")
 
 
 class Context(
@@ -73,7 +78,7 @@ class Context(
         if res["ok"]:
             return res["result"]
         error_code,desc = res["error_code"],res["description"]
-        raise TelegramResultError(f"Error Code <{error_code}>:: {desc}")
+        raise TelegramResultError(error_code,desc)
     
     def _set_current_context (self):
         """
