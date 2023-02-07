@@ -1,7 +1,7 @@
 from autotelegram.telegram.objects.base import BaseObject
 from autotelegram.telegram.objects.webapp import WebAppInfo
 from autotelegram.telegram.objects.loginurl import LoginUrl
-from typing import Optional
+from typing import Optional,Literal
 
 class CallbackGame(BaseObject):
     """
@@ -55,17 +55,108 @@ class InlineKeyboardButton(BaseObject):
         self.pay: Optional[bool] = None
         
 
+KeyboardType = Literal["stack","grid"]
 
 class InlineKeyboardMarkup(BaseObject):
+
 
     """"
     
         This object represents an inline keyboard that appears right next to the message it belongs to.
         Args:
+            keyboard_type (str): The type of keyboard to create. The value can either be "stack"
+            which creates a stacked keyboard or "grid" which creates a grid keyboard
+
+            cols (int): The number of columns to create if keyboard_type is "grid". Defaults to 2
+
             inline_keyboard (list[:obj:`InlineKeyboardButton`]) : Array of button rows, each represented by an Array of InlineKeyboardButton objects
     
     """
     
 
-    def __init__(self, inline_keyboard: list[InlineKeyboardButton] = None) -> None:
+    def __init__(self, 
+                 keyboard_type:Optional[KeyboardType] = "stack",
+                 cols:int = 2,
+                 inline_keyboard: list[InlineKeyboardButton] = None
+                 ) -> None:
+        
+        self.keyboard_type = keyboard_type
+        self.cols = cols
         self.inline_keyboard = inline_keyboard
+        
+        cols = self.cols if self.keyboard_type == "grid" else None
+        self._keyboard = Keyboard(self.keyboard_type,cols)
+
+    def add_button (self,text,**kwargs):
+        """
+        Add InlineKeyboardButton to the keyboard. The buttons will be arranged according to the 
+        type of the keyboard set by keyboard_type option.
+        Args:
+            text: The text to place on the InlineKeyboardButton
+            **kwargs: One of the options that are documented in InlineKeyboardButton class
+        """
+        kb_btn = InlineKeyboardButton(text)
+        if kwargs:
+            for k,v in kwargs.items():
+                setattr(kb_btn,k,v)
+        self._keyboard.add_button(kb_btn)
+
+    def keyboard (self):
+        kb = {}
+        kb["inline_keyboard"] = self._keyboard.keyboard()
+        return kb
+    
+
+
+
+class Keyboard (list):
+
+    class GridRow (list):
+        """
+        class representing a row in the InlineKeyboard
+        """
+        def __init__ (self,maxsize):
+            self.maxsize = maxsize
+            super(Keyboard.GridRow,self).__init__()
+
+        def append (self,item):
+            if len(self) < self.maxsize:
+                super().append(item)
+                return
+            raise ValueError
+        
+    def __init__ (self,kb_type,cols = None):
+        from autotelegram.telegram.parser import Composer
+
+        self.kb_type = kb_type if kb_type in ["stack","grid"] else None
+        self.cols = cols
+        self.cur_row = None
+        self._composer = Composer()
+        super(Keyboard,self).__init__()
+
+    def add_button (self,btn):
+        kb_btn = self._composer.compose(btn)
+
+        if self.kb_type == "stack":
+            self.append([kb_btn])
+
+        elif self.kb_type == "grid":
+            if self.cur_row:
+                try:
+                    self.cur_row.append(kb_btn)
+                except ValueError:
+                    new_row = self.GridRow(self.cols)
+                    new_row.append(kb_btn)
+                    self.cur_row = new_row
+                    self.append(self.cur_row)
+            else:
+                new_row = self.GridRow(self.cols)
+                new_row.append(kb_btn)
+                self.cur_row = new_row
+                self.append(self.cur_row)
+
+        else:
+            raise ValueError("Invalid keyboard type")
+        
+    def keyboard (self):
+        return self
