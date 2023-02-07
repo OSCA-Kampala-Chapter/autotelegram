@@ -161,11 +161,8 @@ class Message(BaseObject):
             **kwargs: These are the same kwargs passed to the send_message method.
         """
 
-        await self._current_context.send_message(chat_id = self.chat.id,
-                                                 reply_to_message_id = self.message_id,
-                                                 text = text,
-                                                 **kwargs
-                                                 )
+        update = await self._current_context.send_message(chat_id = self.chat.id,reply_to_message_id = self.message_id,text = text,**kwargs)
+        return update.message
         
     async def respond_with_text (self,text,**kwargs):
         """
@@ -177,10 +174,14 @@ class Message(BaseObject):
             **kwargs: These are the same kwargs passed to the send_message method
         """
 
-        await self._current_context.send_message(chat_id = self.chat.id,
-                                                 text = text,
-                                                 **kwargs
-                                                 )
+        update = await self._current_context.send_message(chat_id = self.chat.id,text = text,**kwargs)
+        return update.message
+        
+    async def delete_message(self):
+        """
+        Delete this message
+        """
+        await self._current_context.delete_message(chat_id = self.chat.id,message_id = self.message_id)
 
 class MessageAutoDeleteTimerChanged(BaseObject):
     """This object represents a service message about a change in auto-delete timer settings.
