@@ -2,9 +2,9 @@
 from autotelegram.telegram.context import Context
 import asyncio
 
-__all__ = ("App",)
+__all__ = ("BaseApp","PollingApp")
 
-class App (object):
+class BaseApp (object):
     """
     The Telegram application 
     """
@@ -63,7 +63,9 @@ class App (object):
             continue
         
 
-    def run (self,callback,wait_for = 0,*,mode = None):
+class PollingApp(BaseApp):
+
+    def run (self,callback,wait_for = 0):
         """
         Runs the bot application.
         Args:
@@ -72,8 +74,6 @@ class App (object):
 
             wait_for: integer representing the time in seconds to wait before requesting for updates
 
-            mode: determines how to run the application. This argument is not used currently and 
-            only left for future purposes.
         """
         print("running now...") #add logging here
         
