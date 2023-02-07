@@ -2,9 +2,9 @@
 from autotelegram.telegram.context import Context
 import asyncio
 
-__all__ = ("Application",)
+__all__ = ("App",)
 
-class Application (object):
+class App (object):
     """
     The Telegram application 
     """
