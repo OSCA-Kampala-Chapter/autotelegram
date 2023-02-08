@@ -42,7 +42,7 @@ theme:
         icon: material/brightness-7
         name: Switch to dark mode
       primary: deep orange
-  logo: assets/logo.png
+  logo: assets/autotelegram-logo.png
   favicon: assets.png
   
     
