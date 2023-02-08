@@ -1157,7 +1157,6 @@ class Parser:
 
         """
         if "message_id" in json_data.keys():
-            print("parsing...")
             return self._parse_message("message",json_data)
         return self._parse_update(json_data)
 
