@@ -11,8 +11,8 @@ repo_url: https://github.com/OSCA-Kampala-Chapter/autotelegram
 theme:
   name: material
   features:
-    - navigation.tabs
-    - header.autohide #the header is automatically hidden when the user scrolls past a certain threshold, leaving more space for content. Add the following lines to mkdocs.yml:
+    #- navigation.tabs
+    #- header.autohide #the header is automatically hidden when the user scrolls past a certain threshold, leaving more space for content. Add the following lines to mkdocs.yml:
     - search.suggest
     - search.share
     - search.highlight
@@ -51,7 +51,7 @@ nav:
   - Home: index.md
   - Objects: objects.md
   - Reference: reference.md
-  - FAQS: faqs.md
+  - Get started: get_started.md
 
 
 # These appeal to the footer section of the file and are linked to direct following handles
@@ -70,7 +70,7 @@ extra:
 
 
 # These are markdown extensions: `They are used up in highliting of 
-#codes and even make the page to look more cute`
+# codes and even make the page to look more cute`
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -102,4 +102,4 @@ plugins:
 # Copyright Section: In this section, it's almost the same as adding a copyright tag in the 
 #html languange. All waht it does is to add a copyright infomation message within the footer section.
 copyright: |
-  &copy; 2022 <a href="https://github.com/OSCA-Kampala-Chapter/autotelegram"  target="_blank" rel="noopener">autotelegram</a>
+  &copy; 2023 <a href="https://github.com/OSCA-Kampala-Chapter/autotelegram"  target="_blank" rel="noopener">autotelegram</a>
