@@ -1,11 +1,11 @@
-# AutoBot Information
-site_name: AutoBot Documentation
-site_author: Tobais
+# Autotelegram Information
+site_name: Autotelegram Documentation
+site_author: Tobias Thomas
 edit_uri: blob/main/docs/
 
 # Repository
-repo_name: OSCA-Kampala-Chapter/autobot
-repo_url: https://github.com/OSCA-Kampala-Chapter/autobot
+repo_name: OSCA-Kampala-Chapter/autotelegram
+repo_url: https://github.com/OSCA-Kampala-Chapter/autotelegram
 
 # Configuration
 theme:
@@ -42,7 +42,7 @@ theme:
         icon: material/brightness-7
         name: Switch to dark mode
       primary: deep orange
-  logo: assets/logo.png
+  logo: assets/autotelegram-logo.png
   favicon: assets.png
   
     
@@ -60,7 +60,7 @@ extra:
   - stylesheets/extra.css
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/OSCA-Kampala-Chapter/autobot
+      link: https://github.com/OSCA-Kampala-Chapter/autotelegram
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/oscakampala
     - icon: fontawesome/brands/linkedin
@@ -102,4 +102,4 @@ plugins:
 # Copyright Section: In this section, it's almost the same as adding a copyright tag in the 
 #html languange. All waht it does is to add a copyright infomation message within the footer section.
 copyright: |
-  &copy; 2022 <a href="https://github.com/OSCA-Kampala-Chapter/autobot"  target="_blank" rel="noopener">Autobot</a>
+  &copy; 2022 <a href="https://github.com/OSCA-Kampala-Chapter/autotelegram"  target="_blank" rel="noopener">autotelegram</a>

@@ -1,13 +1,13 @@
 <!---The image (logo) will only appear in light mode but not dark mode-->
-![Logo](assets/autobot.png)
+![Logo](assets/autotelegram.png)
 
-## **Welcome To Autobot Documentation!**
+## **Welcome To Autotelegram Documentation!**
 > 1 min read
 
-If your reading this documentation, Our team autobot <b>Open Source Kampala Chapter</b> is welcoming you to this official bot that is deployed
+If your reading this documentation, Our team Autotelegram <b>Open Source Kampala Chapter</b> is welcoming you to this official bot that is deployed
 with our telegram channel [here.](404.md) You can also subscrie to our newslater by clicking [here.](404.md). To get more updates for future
 release(s), check out our socials by clicking any of the links below; <br>
-  <a href="https://twitter.com/Oscaampala/(404.md)">
+  <a href="https://twitter.com/oscakampala">
    <img src="https://img.shields.io/badge/Twitter-blue?label=Twitter&logo=Twitter&style=for-the-badge" />
   </a>
   <a href="https://www.linkedin.com/in/kisakye-moses/">
@@ -18,15 +18,15 @@ release(s), check out our socials by clicking any of the links below; <br>
   </a>
 
 
-## **What Is Autobot?**
+## **What Is Autotelegram?**
 > 1 min read
 
-Autobot is a bot library targetted to build software bots for various platforms with ease of integration in mind.
+Autotelegram is a bot library targetted to build software bots for various platforms with ease of integration in mind.
 project still under active construction, so there's no proper documentation or support information to help that much. 
 To contribute to the project, please follow along with the issues being posted and also the discussions.
 ## **Requirements**
 > 1 min read <br>
-what you need to run autobot
+what you need to run Autotelegram
 
 ``` python
     pip install

@@ -1150,8 +1150,14 @@ class Parser:
     def parse (self,json_data:dict):
         """
         The parse method takes in a dictionary representing the results from a telegram bot
-        and initiates the parsing process. It returns a single update object
+        and initiates the parsing process. It returns a single update object or message object
+        depending on the json object to parse.
+        Args:
+            json_data: The json object to parse
+
         """
+        if "message_id" in json_data.keys():
+            return self._parse_message("message",json_data)
         return self._parse_update(json_data)
 
 
