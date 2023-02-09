@@ -93,8 +93,6 @@ class PollingApp(BaseApp):
 
             wait_for: integer representing the time in seconds to wait before requesting for updates
 
-        """
-        print("running now...") #add logging here
-        
+        """        
 
         asyncio.run(self._runner(callback,wait_for))
