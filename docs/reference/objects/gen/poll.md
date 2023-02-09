@@ -1,0 +1,2 @@
+
+::: autotelegram.telegram.objects.poll
