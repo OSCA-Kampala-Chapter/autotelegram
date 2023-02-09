@@ -301,6 +301,8 @@ class Parser:
         return animation_obj
 
     def _parse_inlinekeyboardobject(self,key,val) -> InlineKeyboardButton|InlineKeyboardMarkup:
+        inline_obj = None
+        
         if (key == "inline_keyboard_button"):
             inline_obj = InlineKeyboardButton()
             for k,v in val.items():
