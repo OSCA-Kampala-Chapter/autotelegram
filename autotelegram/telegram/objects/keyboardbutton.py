@@ -3,11 +3,11 @@ from typing import Optional
 
 class KeyboardButton(BaseObject):
     """
-   This object represents one button of the reply keyboard. 
-   For simple text buttons String can be used instead of 
-   this object to specify text of the button. 
-   Optional fields `web_app`, `request_contact`, `request_location`, 
-   and `request_poll` are mutually exclusive..
+    This object represents one button of the reply keyboard. 
+    For simple text buttons String can be used instead of 
+    this object to specify text of the button. 
+    Optional fields `web_app`, `request_contact`, `request_location`, 
+    and `request_poll` are mutually exclusive.
 
     Args:
         text (str): Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed
@@ -16,7 +16,7 @@ class KeyboardButton(BaseObject):
         request_location (bool): Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only
         request_poll (str): Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only
         web_app (str): Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only
-"""
+    """
 
     
     def __init__(self, text: str = None, type: str = None) -> None:
@@ -35,8 +35,7 @@ class KeyboardButtonPollType(BaseObject):
     and sent when the corresponding button is pressed.
 
     Args:
-        type (str): Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode. 
-        If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.
+        type (str): Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.
     """
 
 
