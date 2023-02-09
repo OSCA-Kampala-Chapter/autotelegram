@@ -49,9 +49,55 @@ theme:
 # defines the order of the markdown
 nav:
   - Home: index.md
-  - Objects: objects.md
-  - Reference: reference.md
-  - Get started: get_started.md
+  - Getting started: get_started.md
+  - User Guide:
+    - Intro: "user-guide/intro.md"
+  - Architecture: architecture.md
+  - Reference:
+    - application: "reference/application.md"
+    - context: "reference/context.md"
+    - network: "reference/network.md"
+    - parser: "reference/parser.md"
+    - Objects:
+      - games: "reference/objects/games/games.md"
+      - inline: "reference/objects/inline/inline.md"
+      - passport: "reference/objects/passport/passport.md"
+      - payments: "reference/objects/payments/payments.md"
+      - stickers: "reference/objects/stickers/stickers.md"
+      - general:
+        - animation: "reference/objects/gen/animation.md"
+        - audio: "reference/objects/gen/audio.md"
+        - base : "reference/objects/gen/base.md"
+        - botcommand: "reference/objects/gen/botcommand.md"
+        - callbackquery: "reference/objects/gen/callbackquery.md"
+        - chat: "reference/objects/gen/chat.md"
+        - chatmember: "reference/objects/gen/chatmember.md"
+        - contact: "reference/objects/gen/contact.md"
+        - dice: "reference/objects/gen/dice.md"
+        - document: "reference/objects/gen/document.md"
+        - file: "reference/objects/gen/file.md"
+        - forcereply: "reference/objects/gen/forcereply.md"
+        - forumtopic: "reference/objects/gen/forumtopic.md"
+        - inlinekeyboard: "reference/objects/gen/inlinekeyboard.md"
+        - inputfile: "reference/objects/gen/inputfile.md"
+        - keyboardbutton: "reference/objects/gen/keyboardbutton.md"
+        - location: "reference/objects/gen/location.md"
+        - loginurl: "reference/objects/gen/loginurl.md"
+        - menubutton: "reference/objects/gen/menubutton.md"
+        - message: "reference/objects/gen/message.md"
+        - photosize: "reference/objects/gen/photosize.md"
+        - poll: "reference/objects/gen/poll.md"
+        - proximityalerttriggered: "reference/objects/gen/proximityalerttriggered.md"
+        - replykeyboard: "reference/objects/gen/replykeyboard.md"
+        - responseparamaters: "reference/objects/gen/responseparameters.md"
+        - update: "reference/objects/gen/update.md"
+        - user: "reference/objects/gen/user.md"
+        - venue: "reference/objects/gen/venue.md"
+        - video: "reference/objects/gen/video.md"
+        - voice: "reference/objects/gen/voice.md"
+        - webapp: "reference/objects/gen/webapp.md"
+  - Contributing: contributing.md
+
 
 
 # These appeal to the footer section of the file and are linked to direct following handles
