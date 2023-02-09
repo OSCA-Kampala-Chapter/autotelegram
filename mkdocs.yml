@@ -58,7 +58,14 @@ nav:
     - context: "reference/context.md"
     - network: "reference/network.md"
     - parser: "reference/parser.md"
-    - Objects:
+    - api:
+      - games api: "reference/api/gamesapi.md"
+      - inline api: "reference/api/inlineapi.md"
+      - passport api: "reference/api/passportapi.md"
+      - payments api: "reference/api/paymentsapi.md"
+      - stickers api: "reference/api/stickersapi.md"
+      - general api: "reference/api/genapi.md"
+    - objects:
       - games: "reference/objects/games/games.md"
       - inline: "reference/objects/inline/inline.md"
       - passport: "reference/objects/passport/passport.md"
