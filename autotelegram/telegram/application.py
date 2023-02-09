@@ -11,6 +11,7 @@ class BaseApp (object):
     def __init__ (self,context:Context) -> None:
         self._context = context
         self._commandhandlers = {}
+        self._errorhandlers = {}
 
     def add_commandhandler (self,command:str):
         """
@@ -38,29 +39,47 @@ class BaseApp (object):
         
     async def _runner (self,callback,wait_for):
 
-        while True:
-            updates = await self._context.get_updates()
+        try:
+            while True:
+                updates = await self._context.get_updates()
 
-            for update in updates:
-                try:
-                    msg = update.message.text
-                    if msg.startswith("/"):
-                        try:
-                            cmd_handler = self._commandhandlers[msg]
-                            await cmd_handler(update,self._context)
-                        except KeyError:
+                for update in updates:
+                    try:
+                        msg = update.message.text
+                        if msg.startswith("/"):
+                            try:
+                                cmd_handler = self._commandhandlers[msg]
+                                await cmd_handler(update,self._context)
+                            except KeyError:
+                                await callback(update,self._context)
+                        else:
                             await callback(update,self._context)
-                    else:
+                    except AttributeError:
+                        """
+                        message is None, so we assume there are other attributes such as
+                        callback query or poll so we call the callback to process the update
+                        """
                         await callback(update,self._context)
-                except AttributeError:
-                    """
-                    message is None, so we assume there are other attributes such as
-                    callback query or poll so we call the callback to process the update
-                    """
-                    await callback(update,self._context)
 
-            await asyncio.sleep(wait_for)
-            continue
+                await asyncio.sleep(wait_for)
+                continue
+
+        except Exception as exp:
+
+            exp_type = type(exp)
+            try:
+                handler = self._errorhandlers[exp_type]
+            except KeyError:
+                raise exp
+            else:
+                handler(exp)
+
+    def add_errorhandler (self,exception,handler):
+        """
+        Adds an exception handler function to the application class. The handler is called with
+        the raised exception
+        """
+        self._errorhandlers[exception] = handler
         
 
 class PollingApp(BaseApp):
