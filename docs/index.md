@@ -50,8 +50,8 @@ what you need to run Autotelegram
 | mkdocs-material | 8.5.7 | Write your documentation in Markdown and create a professional static site for your Open Source or commercial project in minutes – searchable, customizable, more than 50 languages, for all devices. [installation-guide-here](https://pypi.org/project/mkdocs-material/)|
 | mkdocs-material-extensions | 1.1 | Markdown extension resources for MkDocs for Material [installation-guide-here](https://pypi.org/project/mkdocs-material-extensions/)|
 | mkdocstrings | 0.19.0 | Automatic documentation from sources, for MkDocs.  [installation-guide-here](https://pypi.org/project/mkdocstrings/)|
-| mkdocstrings-pyhton | 0.7.1 | It is a python handler for mkdocstrings.[installation-guide-here](https://pypi.org/project/mkdocs-material/)|
-| pacakging | 21.3 | This library provides utilities that implement the interoperability specifications which have clearly one correct behaviour (eg: PEP 440) or benefit greatly from having a single shared implementation (eg: PEP 425). [installation-guide-here](https://pypi.org/project/packaging/) |
+| mkdocstrings-python | 0.7.1 | It is a python handler for mkdocstrings.[installation-guide-here](https://pypi.org/project/mkdocs-material/)|
+| packaging | 21.3 | This library provides utilities that implement the interoperability specifications which have clearly one correct behaviour (eg: PEP 440) or benefit greatly from having a single shared implementation (eg: PEP 425). [installation-guide-here](https://pypi.org/project/packaging/) |
 | pygments | 2.13.0 | This library provides utilities that implement the interoperability specifications which have clearly one correct behaviour (eg: PEP 440) or benefit greatly from having a single shared implementation (eg: PEP 425). [installation-guide-here](https://pypi.org/project/packaging/) |
 | pymdown-extensions | 9.7 | Extensions for Python Markdown. [installation-guide-here](https://pypi.org/project/pymdown-extensions/9.7/)|
 | pyparsing | 3.0.9 | pyparsing module - Classes and methods to define and execute parsing grammars. [installation-guide-here](https://pypi.org/project/pyparsing/) |
