@@ -1,4 +1,4 @@
-### First bot
+### Your first bot
 Autotelegram cares about developer productivity, and that's why it tries to abstract away the tedious
 and laborious complex code needed to develop telegram bots and provides you a nice and clean API to 
 help you quickly spin-up a telegram bot in minutes. You wanna see how it works? let's get started
