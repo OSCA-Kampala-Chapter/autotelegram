@@ -121,7 +121,7 @@ _current_context:Context = None
 
 def get_current_context ():
     """
-    this function returns  _current_context.
+    this function returns current context of the bot.
     """
 
     return _current_context
