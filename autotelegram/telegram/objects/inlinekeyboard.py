@@ -70,7 +70,16 @@ class InlineKeyboardMarkup(BaseObject):
             cols (int): The number of columns to create if keyboard_type is "grid". Defaults to 2
 
             inline_keyboard (list[:obj:`InlineKeyboardButton`]) : Array of button rows, each represented by an Array of InlineKeyboardButton objects
-    
+        Examples:
+            ```python
+            from autotelegram.telegram.objects import InlineKeyboardMarkup
+            
+            keyboard = InlineKeyboardMarkup()
+            keyboard.add_button("one",callback_data="1")
+            keyboard.add_button("two",callback_data="2")
+            keyboard.add_button("three",callback_data="3")
+            board = keyboard.keyboard()
+            ```    
     """
     
 
@@ -102,6 +111,9 @@ class InlineKeyboardMarkup(BaseObject):
         self._keyboard.add_button(kb_btn)
 
     def keyboard (self):
+        """
+        returns a rendered keyboard to be used in the `reply_markup` argument of message methods.
+        """
         kb = {}
         kb["inline_keyboard"] = self._keyboard.keyboard()
         return kb
