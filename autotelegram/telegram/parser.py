@@ -1149,18 +1149,21 @@ class Parser:
 
     ##################################################################################################
 
-    def parse (self,json_data:dict):
+    def parse (self,json_data:dict,root_object:str = None):
         """
-        The parse method takes in a dictionary representing the results from a telegram bot
-        and initiates the parsing process. It returns a single update object or message object
-        depending on the json object to parse.
+        The parse method initiates the parsing processing for constructing a telegram object
+        tree from a JSON object. It takes in an optional second argument to direct the parse.
+        The second argument is a string representing the object to use as root and continue 
+        the parsing from.
         Args:
-            json_data: The json object to parse
-
+            json_data (dict): The json object to parse
+            root_object (str): The object to use as root and start the parsing process from. Can be "message","chat","user" etc
         """
-        if "message_id" in json_data.keys():
-            return self._parse_message("message",json_data)
-        return self._parse_update(json_data)
+        match root_object:
+            case "message":
+                return self._parse_message("message",json_data)
+            case _:
+                return self._parse_update(json_data)
 
 
 
