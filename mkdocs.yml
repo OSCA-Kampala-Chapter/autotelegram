@@ -51,7 +51,7 @@ nav:
   - Home: index.md
   - Getting started: get_started.md
   - User Guide:
-    - Intro: "user-guide/intro.md"
+    - working with messages: "user-guide/messages.md"
   - Architecture: architecture.md
   - Reference:
     - application: "reference/application.md"
