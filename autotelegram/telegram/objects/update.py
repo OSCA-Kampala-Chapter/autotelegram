@@ -72,3 +72,20 @@ class Update (BaseObject):
         self.chat_member: Optional[ChatMemberUpdated] = None
         self.chat_join_request: Optional[ChatJoinRequest] = None
 
+    def get_object (self) -> str:
+        """
+        Use this method to determine which update object has been sent.
+        The return value is a tuple containing name of the object set as a string
+        and the set object itself.
+        Returns:
+            returns a tuple of object name and object, such as:
+            ("message",<autotelegram.telegram.objects.message.Message>)
+        """
+
+        for key,value in vars(self).items():
+            if value:
+                if key == "update_id":
+                    continue
+                else:
+                    return key,value
+            continue
