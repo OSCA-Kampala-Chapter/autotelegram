@@ -40,7 +40,7 @@ You don't have to manually install all these, they shall be automatically instal
 Just copy and paste the code snippet below in your command line or terminal and you're good to go.
 
 ``` python
-    pip install
+    pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.2.0-beta.zip
 ```
 
 | Syntax      | Version | Info (Description)    | 
