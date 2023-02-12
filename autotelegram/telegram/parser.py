@@ -1156,7 +1156,7 @@ class Parser:
         The second argument is a string representing the object to use as root and continue 
         the parsing from.
         Args:
-            json_data (str): The json object to parse
+            json_data (dict): The json object to parse
             root_object (str): The object to use as root and start the parsing process from. Can be "message","chat","user" etc
         """
         match root_object:
