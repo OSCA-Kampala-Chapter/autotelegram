@@ -38,6 +38,7 @@ Autotelegram is built by developers from the open source community of kampala an
 What you need to run Autotelegram.
 You don't have to manually install all these, they shall be automatically installed for you.
 Just copy and paste the code snippet below in your command line or terminal and you're good to go.
+> Note: autotelegram only supports the 3.10 version of python and above
 
 ``` python
     pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.2.0-beta.zip

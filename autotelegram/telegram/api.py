@@ -38,6 +38,7 @@ class BotAPI:
         """Use this method to send text messages. On success, the sent Message is returned.
 
         Args:
+            parse_director (str): A string representing object to start parsing from. The object will become the root of the object tree.
             chat_id (int | str): Unique identifier for the target chat or username of the target channel (in the format @channelusername)
             text (str): Text of the message to be sent, 1-4096 characters after entities parsing
             message_thread_id (int | None, optional): Unique identifier for the target message thread (topic) of the forum; for forum supergroups only. Defaults to None.
@@ -51,8 +52,15 @@ class BotAPI:
             reply_markup (InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply, optional): Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. Defaults to None.
         """
         url = self.url.add_method("sendMessage")
-        res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        try:
+            pd = kwargs.pop("parse_director")
+        except KeyError:
+            res = await self._post(url = url, body = kwargs)
+            return self.parser.parse(res)
+        else:
+            res = await self._post(url = url,body = kwargs)
+            return self.parser.parse(res,root_object = pd)
+        
 
     async def foward_message(self, **kwargs) -> None:
         """Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.
