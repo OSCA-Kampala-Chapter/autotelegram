@@ -18,7 +18,7 @@ class BotAPI:
         """
         url = self.url.add_method("getMe")
         res = await self._get(url=url)
-        return self.parser.parse(res)
+        return self.parser.parse(res,root_object = "user")
 
     async def logout(self) -> None:
         """Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
@@ -1024,5 +1024,5 @@ class BotAPI:
         """
         """
         url = self.url.add_method("deleteMessage")
-        res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        await self._post(url = url,body = kwargs)
+        return True
