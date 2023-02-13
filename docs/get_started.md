@@ -19,7 +19,8 @@ from autotelegram.telegram.context import Context
 from autotelegram.telegram.application import PollingApp
 
 TOKEN = "token-for-the-bot"
-ctx:Context = Context(TOKEN)
+
+ctx = Context(TOKEN)
 app = PollingApp(ctx)
 
 async def echo (update,ctx):
