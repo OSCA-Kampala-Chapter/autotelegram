@@ -7,7 +7,7 @@ __all__ = ("BaseApp","PollingApp")
 
 class BaseApp (object):
     """
-    The Telegram application 
+    Base class for the telegram application.
     """
     def __init__ (self,context:Context) -> None:
         self._context = context
@@ -19,7 +19,7 @@ class BaseApp (object):
         Registers a coroutine function to be called whenever the bot receives a command instruction
         from the user. The callback should accept one argument which is the bot context instance.
         Args:
-            command: a string representing a command to add a handler to. The command should start with a forward slash '/'
+            command (str): a string representing a command to add a handler to. The command should start with a forward slash '/'
         """
 
         def handler_func (callback):
@@ -31,6 +31,10 @@ class BaseApp (object):
         """
         Remove command and respective callback from the register.
         Raises ValueError in case the command was not registered before.
+        Args:
+            command (str): command to remove from handler table
+        Raises:
+            ValueError
         """
 
         try:
@@ -38,6 +42,22 @@ class BaseApp (object):
         except KeyError:
             raise ValueError(f"command {command} was not registered.")
         
+
+    def add_errorhandler (self,exception,handler):
+        """
+        Adds an exception handler function to the application class. The handler is called with
+        the raised exception
+        """
+        self._errorhandlers[exception] = handler
+        
+
+class PollingApp(BaseApp):
+    """
+    Implementation of the polling update method for bot applications. This application runs in a loop
+    while making periodic requests to the bot API to poll for updates. Once updates are received, they are
+    then processed.
+    """
+
     async def _runner (self,callback,wait_for):
 
         try:
@@ -75,24 +95,15 @@ class BaseApp (object):
             else:
                 handler(exp)
 
-    def add_errorhandler (self,exception,handler):
-        """
-        Adds an exception handler function to the application class. The handler is called with
-        the raised exception
-        """
-        self._errorhandlers[exception] = handler
-        
-
-class PollingApp(BaseApp):
-
     def run (self,callback,wait_for = 0):
         """
-        Runs the bot application.
+        Runs the bot application, calling the `callback` coroutine for every request made to the bot API.
+        It waits for `wait_for` seconds before making another request to get updates, defualt is 0.
         Args:
-            callback: coroutine function to be called for every update object received. This function should
+            callback (async function): coroutine function to be called for every update object received. This function should
             accept two arguments which are the update object and the bot context
 
-            wait_for: integer representing the time in seconds to wait before requesting for updates
+            wait_for (int): integer representing the time in seconds to wait before requesting for updates
 
         """        
 

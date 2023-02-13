@@ -1162,6 +1162,8 @@ class Parser:
         match root_object:
             case "message":
                 return self._parse_message("message",json_data)
+            case "user":
+                return self._parse_user("user",json_data)
             case _:
                 return self._parse_update(json_data)
 
