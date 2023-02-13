@@ -78,8 +78,7 @@ class Update (BaseObject):
         The return value is a tuple containing name of the object set as a string
         and the set object itself.
         Returns:
-            returns a tuple of object name and object, such as:
-            ("message",<autotelegram.telegram.objects.message.Message>)
+            (tuple): a tuple of object name and object, such as ("message",`<autotelegram.telegram.objects.message.Message>`)
         """
 
         for key,value in vars(self).items():
