@@ -51,7 +51,9 @@ nav:
   - Home: index.md
   - Getting started: get_started.md
   - User Guide:
-    - working with messages: "user-guide/messages.md"
+    - How autotelegram works: "user-guide/how-it-works.md"
+    - Making requests: "user-guide/making-requests.md"
+    - Working with messages: "user-guide/messages.md"
   - Architecture: architecture.md
   - Reference:
     - application: "reference/application.md"
