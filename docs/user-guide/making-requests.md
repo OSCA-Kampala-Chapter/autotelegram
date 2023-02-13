@@ -8,7 +8,7 @@ Telegram provides a url of the form `https://api.telegram.org/bot<TOKEN>/` to in
 ### Making requests
 With a token, we can now manually interact with our bot. Let us test and see.
 ```python
->>> from urllib.request inport urlopen
+>>> from urllib.request import urlopen
 >>> from pprint import PrettyPrinter
 >>> import json
 
