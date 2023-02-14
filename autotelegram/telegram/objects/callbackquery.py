@@ -22,6 +22,12 @@ class CallBackQuery(BaseObject):
 
 
     def __init__(self, id: str = None, from_: User = None, chat_instance: str = None) -> None:
+        try:
+            from autotelegram.telegram.context import get_current_context
+        except Exception as e:
+            raise e
+        
+        self._current_context = get_current_context()
         self.id = id
         self.from_ = from_
         self.chat_instance = chat_instance
@@ -30,4 +36,10 @@ class CallBackQuery(BaseObject):
         self.data: Optional[str] = None
         self.game_short_name: Optional[str] = None
 
-
+    async def answer (self,**kwargs):
+        """
+        use this method to answer callback_queries sent from inlinekeyboards. This calls
+        the `answer_callbackquery` context api method under the hood and takes in its arguments
+        except the `callback_query_id`.
+        """
+        return await self._current_context.answer_callback_query(callback_query_id = self.id, **kwargs)
