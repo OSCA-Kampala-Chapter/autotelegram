@@ -879,6 +879,9 @@ class BotAPI:
         Returns:
             bool: On success, True is returned.
         """
+        url = self.url.add_method("answerCallbackQuery")
+        await self._post(url = url,body = kwargs)
+        return True
 
     async def set_my_commands(self, **kwargs) -> bool:
         """Use this method to change the list of the bot's commands.
