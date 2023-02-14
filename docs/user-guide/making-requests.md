@@ -76,7 +76,7 @@ The PollingApp is responsible for making periodic requests to the bot api and ca
 >>> bot = PollingApp(context)
 >>> 
 >>> async def main (update,context):
-...     print("received update)
+...     print("received update: ",update.update_id)
 ...
 >>> bot.run(main)
 ```
