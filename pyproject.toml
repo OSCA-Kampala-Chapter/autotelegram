@@ -1,6 +1,6 @@
 [project]
 name = "autotelegram"
-version = "0.0.1a1"
+version = "0.3-beta"
 dependencies = [
     "httpx >= 0.23.0",
 ]
