@@ -71,6 +71,7 @@ if __name__ == "__main__":
 ```
 We've created our `start_handler` command handler function. This will be called every time
 a new user starts a conversation with our bot.
+![trial](../assets/trial.jpeg)
 
 ### Further
 This section was just to give a small taste on how easy it is to build telegram bots with
