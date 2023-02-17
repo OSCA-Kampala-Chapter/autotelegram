@@ -13,7 +13,7 @@ Installing autotelegram on your system is as easy as pip installing it. Just cop
 the snippet below in your command line
 
 ```
-pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.2.0-beta.zip
+pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.3-beta.zip
 ```
 
 For details on how to develop with autotelegram, please checkout our [documentation](https://osca-kampala-chapter.github.io/autotelegram/)
