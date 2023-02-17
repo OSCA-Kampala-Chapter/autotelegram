@@ -42,7 +42,7 @@ Just copy and paste the code snippet below in your command line or terminal and 
 ## > Note: autotelegram only supports python 3.10 and above
 
 ``` python
-    pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.2.0-beta.zip
+    pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.3-beta.zip
 ```
 
 | Syntax      | Version | Info (Description)    | 
