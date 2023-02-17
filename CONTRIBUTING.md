@@ -28,16 +28,16 @@ There are many ways you can contribute to the Autotelegram project: It doesn't n
 - Improve existing code
 - Add new functionality
 
-We welcome contributions from everyone, regardless of their level of experience or technical background. However, we ask that you follow the guidelines as clearly shown in the README.md and below to help us when reviewing your Pull Request in order to integrate your contributions quickly and smoothly. Read here on how to make a Pull Request.
+We welcome contributions from everyone, regardless of their level of experience or technical background. However, we ask that you follow the guidelines as clearly shown in the README.md and below to help us when reviewing your Pull Request in order to integrate your contributions quickly and smoothly. Read <a href="https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/working-with-your-remote-repository-on-github-or-github-enterprise/creating-an-issue-or-pull-request">here</a> on how to make a Pull Request.
 
 ## Getting Started
 
 To get started, you should:
 
 1. Fork the Autotelegram repository on GitHub
-2. Clone your fork to your local machine, by either running git clone https://github.com/your-username/autotelegram.git
-3. Install the development dependencies using pip install -r requirements-dev.txt
-4. Read the documentation to learn how to use the tool and how to run tests
+2. <a href="https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">Clone your fork</a> to your local machine.
+3. Install the development dependencies using ` pip install -r requirements-dev.txt `
+4. Read the <a href="https://osca-kampala-chapter.github.io/autotelegram/">documentation</a> to learn how to use the tool and how to run tests.
 
 ## Development Process
 
