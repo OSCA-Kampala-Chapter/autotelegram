@@ -20,7 +20,7 @@ We are committed to providing a friendly, safe, and welcoming environment for al
 
 There are many ways you can contribute to the Autotelegram project: It doesn't necessarily have to be code.
 
-### Use the tool and provide feedback
+### Become a tester/user of the tool and provide feedback
 
 - Report bugs and issues
 - Suggest new features or improvements
@@ -77,14 +77,12 @@ If you need help using the tool or contributing to the project, you can:
 ## Maintainers
 The Autotelegram project is maintained by the following contributors:
 
-<a href = "https://github.com/ht-thomas/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = ht-thomas/autotelegram"/>
-</a>
-<a href = "https://github.com/HassanBahati/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = HassanBahati/autotelegram"/>
-</a>
-<a href = "https://github.com/Samsonroyal/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = Samsonroyal/autotelegram"/>
-</a>
+[Tobias](https://github.com/ht-thomas)
+
+
+[Hassan](https://github.com/HassanBahati)
+
+
+[Samson](https://github.com/Samsonroyal)
 
 If you have any questions or concerns about the project, you can contact any of the maintainers.
