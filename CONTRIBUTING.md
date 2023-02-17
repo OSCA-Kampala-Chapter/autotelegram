@@ -71,16 +71,20 @@ If you have any questions, comments, or feedback about the Autotelegram project,
 
 If you need help using the tool or contributing to the project, you can:
 
-- Join our Telegram group
-- Or our whatsapp group
-- We also have a discord server
-- Send mail to the project maintainers
+- <a href="https://t.me/oscakampala/1">Join our Telegram group</a> 
+- <a href="https://twitter.com/oscakampala" >Follow OSCA-Kla on twitter</a>
 
 ## Maintainers
 The Autotelegram project is maintained by the following contributors:
 
-![Tobias HT](https://github.com/ht-thomas)
-![Hassan Bahati](https://github.com/HassanBahati)
-![Were Samson](https://github.com/Samsonroyal)
+<a href = "https://github.com/ht-thomas/Python/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo = ht-thomas/autotelegram"/>
+</a>
+<a href = "https://github.com/HassanBahati/Python/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo = HassanBahati/autotelegram"/>
+</a>
+<a href = "https://github.com/Samsonroyal/Python/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo = Samsonroyal/autotelegram"/>
+</a>
 
-If you have any questions or concerns about the project, you can contact one of the maintainers.
+If you have any questions or concerns about the project, you can contact any of the maintainers.
