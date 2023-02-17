@@ -24,7 +24,7 @@ and ease of use in mind. The project is under active development and still in be
 To contribute to the project, please follow along with the issues being posted and also the discussions.
 
 ## **Contributing**
-Autotelegram accepts contributions from the community. To know more about how to contribute, read how [contributing](contributing.md) page.
+Autotelegram accepts contributions from the community. To know more about how to contribute, read the[contributing](contributing.md) page.
 
 ## **License**
 
@@ -38,7 +38,8 @@ Autotelegram is built by developers from the open source community of kampala an
 What you need to run Autotelegram.
 You don't have to manually install all these, they shall be automatically installed for you.
 Just copy and paste the code snippet below in your command line or terminal and you're good to go.
-> Note: autotelegram only supports the 3.10 version of python and above
+
+## > Note: autotelegram only supports python 3.10 and above
 
 ``` python
     pip install https://github.com/OSCA-Kampala-Chapter/autotelegram/archive/refs/tags/autotelegram-0.2.0-beta.zip

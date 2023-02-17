@@ -28,7 +28,7 @@ The telegram objects include objects like `Message` object, `Update` object, `Us
     ]
 }
 ```
-after making a request to get updates, telegram responds with a JSON object with the first element being `ok`. if `ok` is `true`, the our request was sucessful and we receive our updates as a list of `result`s. If `ok` is `false`, then there was something wrong with our request and telegram returns to us an `error code` and `description` of the error that occured.
+after making a request to get updates, telegram responds with a JSON object with the first element being `ok`. if `ok` is `true`, then our request was sucessful and we receive our updates as a list of `result`s. If `ok` is `false`, then there was something wrong with our request and telegram returns to us an `error code` and `description` of the error that occured.
 You can read more about error handling [here](https://core.telegram.org/api/errors).
 Autotelegram automatically intercepts this error for you and raises it as a python error called `TelegramResultError` which you can catch in your programs
 

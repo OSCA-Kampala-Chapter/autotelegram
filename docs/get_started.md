@@ -4,8 +4,7 @@ and laborious complex code needed to develop telegram bots and provides you a ni
 help you quickly spin-up a telegram bot in minutes. You wanna see how it works? let's get started
 by building a simple echo bot.
 With the previous API, we had to do a lot of manual work using the context API. If you still want to use
-the context API, it's availabe for us. But the new API builds on top of the context API to give you a nice
-interface to build a bot.
+the context API, it's availabe for you. But the new API builds on top of the context API to give you a nice interface to build a bot.
 
 Before we can proceed building our bot, we need to create a bot in telegram and get our token.
 To get one, we need to create a bot with telegram's bot father. You can get detailed instruction on how to
