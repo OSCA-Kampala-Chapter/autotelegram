@@ -15,7 +15,8 @@
 ``` pip install -r requirements.txt ```
 
 ### Install the testing dependencies:
-``` pip install -r requirements-dev.txt ```
+``` pip install -r requirements.txt ```
+
 
 ## Create a test Telegram bot by following the Telegram documentation on how to create bots.
 
