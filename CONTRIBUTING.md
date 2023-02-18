@@ -34,7 +34,8 @@ We welcome contributions from everyone, regardless of their level of experience 
 
 To get started, you should:
 
-1. Fork the Autotelegram repository on GitHub
+1. Fork the [Autotelegram repository](https://github.com/OSCA-Kampala-Chapter/autotelegram) on GitHub
+
 2. <a href="https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">Clone your fork</a> to your local machine.
 3. Install the development dependencies using ` pip install -r requirements-dev.txt `
 4. Read the <a href="https://osca-kampala-chapter.github.io/autotelegram/">documentation</a> to learn how to use the tool and how to run tests.
