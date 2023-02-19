@@ -1,8 +1,9 @@
 ### Your first bot
-Autotelegram cares about developer productivity, and that's why it tries to abstract away the tedious
-and laborious complex code needed to develop telegram bots and provides you a nice and clean API to 
-help you quickly spin-up a telegram bot in minutes. You wanna see how it works? let's get started
-by building a simple echo bot.
+Autotelegram cares about developer productivity, and that's why it tries to abstract the tedious
+and laborious complex code needed to develop telegram bots and provides you with a nice and clean API to 
+help you to quickly spin-up a telegram bot within minutes. 
+
+You wanna see how it works? let's get started by building a simple echo bot.
 With the previous API, we had to do a lot of manual work using the context API. If you still want to use
 the context API, it's availabe for you. But the new API builds on top of the context API to give you a nice interface to build a bot.
 
@@ -31,12 +32,10 @@ if __name__ == "__main__":
     app.run(echo)
 ```
 So basically here's a break down of this simple app.
-we create an instance of the `Context` class, passing in the bot token.
-We then create an instance of our `PollingApp` class and pass in the context instance.
-Then we write our `echo` async function which shall respond back to every message with
-the same text that was sent to it. 
-We then call the run function of the app with the echo async function. And there you have it,
-a fully functional bot with few lines of code.
+- We create an instance of the `Context` class, passing in the bot token.
+- We create an instance of our `PollingApp` class and pass in the context instance.
+- And write our `echo` async function which shall respond back to every message with the same text that was sent to it. 
+- We call the run function of the app with the echo async function. And there you have it, a fully functional bot with few lines of code.
 
 ### Adding command handlers
 We can add extra features to our bot to make it more useful. Telegram has a concept of [commands.](https://core.telegram.org/bots/features#commands)
@@ -73,5 +72,4 @@ a new user starts a conversation with our bot.
 ![trial](../assets/trial.jpeg)
 
 ### Further
-This section was just to give a small taste on how easy it is to build telegram bots with
-autotelegram. To explore further, check out the rest of the documentation.
+This section was added to give a sneak-peek into how easy it is to build telegram bots with autotelegram. To explore further, check out the rest of the documentation.
