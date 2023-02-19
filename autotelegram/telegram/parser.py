@@ -457,7 +457,14 @@ class Parser:
     def _parse_callbackquery(self,key:str,val:dict) -> CallBackQuery:
         callbackquery_obj = CallBackQuery()
         for k,v in val.items():
-            setattr(callbackquery_obj,k,v)
+            if (k == "from"):
+                user_obj = self._parse_user("from",v)
+                setattr(callbackquery_obj,"from_",user_obj)
+            elif(k == "message"):
+                message_obj = self._parse_message("message",v)
+                setattr(callbackquery_obj,"message",message_obj)
+            else:
+                setattr(callbackquery_obj,k,v)
         return callbackquery_obj
 
     def _parse_forumtopic(self,key:str,val:dict) -> ForumTopicCreated|ForumTopicClosed|ForumTopicReopened:

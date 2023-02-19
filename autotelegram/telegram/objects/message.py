@@ -202,7 +202,8 @@ class Message(BaseObject):
         """
         result = await self._current_context.edit_message_text(chat_id = self.chat.id,
                                                                message_id = self.message_id,
-                                                               text = new_text
+                                                               text = new_text,
+                                                               **kwargs
                                                                )
         return result
 

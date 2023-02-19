@@ -2,7 +2,7 @@
 import asyncio
 from autotelegram.telegram.context import Context
 
-__all__ = ("BaseApp","PollingApp")
+__all__ = ("BaseApp","PollingApp","WebhookApp")
 
 
 class BaseApp (object):
@@ -49,7 +49,24 @@ class BaseApp (object):
         the raised exception
         """
         self._errorhandlers[exception] = handler
-        
+
+    async def _process_update (self,update,callback):
+        try:
+            msg = update.message.text
+            if msg.startswith("/"):
+                try:
+                    cmd_handler = self._commandhandlers[msg]
+                    await cmd_handler(msg,self._context)
+                except KeyError:
+                    await callback(update,self._context)
+            else:
+                await callback(update,self._context)
+        except AttributeError:
+            """
+            message is None, so we assume there are other attributes such as
+            callback query or poll so we call the callback to process the update
+            """
+            await callback(update,self._context)
 
 class PollingApp(BaseApp):
     """
@@ -65,22 +82,7 @@ class PollingApp(BaseApp):
                 updates = await self._context.get_updates()
 
                 for update in updates:
-                    try:
-                        msg = update.message.text
-                        if msg.startswith("/"):
-                            try:
-                                cmd_handler = self._commandhandlers[msg]
-                                await cmd_handler(update,self._context)
-                            except KeyError:
-                                await callback(update,self._context)
-                        else:
-                            await callback(update,self._context)
-                    except AttributeError:
-                        """
-                        message is None, so we assume there are other attributes such as
-                        callback query or poll so we call the callback to process the update
-                        """
-                        await callback(update,self._context)
+                    await self._process_update(update,callback)
 
                 await asyncio.sleep(wait_for)
                 continue
@@ -106,5 +108,5 @@ class PollingApp(BaseApp):
             wait_for (int): integer representing the time in seconds to wait before requesting for updates
 
         """        
-
         asyncio.run(self._runner(callback,wait_for))
+

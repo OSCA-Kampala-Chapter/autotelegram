@@ -56,9 +56,8 @@ ctx:Context = Context(TOKEN)
 app = PollingApp(ctx)
 
 @app.add_commandhandler("/start")
-async def start_handler (update,context):
+async def start_handler (message,context):
     welcome_message = "Hey there lovely user, welcome to echo bot"
-    message = update.message
     await message.respond_with_text(welcome_message)
 
 async def echo (update,ctx):
