@@ -84,6 +84,18 @@ The Autotelegram project is maintained by the following contributors:
 [Hassan](https://github.com/HassanBahati)
 
 
+[Kally](https://github.com/kallyas)
+
+
 [Samson](https://github.com/Samsonroyal)
+
+
+[Uncle Moses](https://github.com/mosespace)
+
+
+[Asiimwe Edgar](https://github.com/edger-asiimwe)
+
+
+[Tumuhimbise Godwin](https://github.com/ushergodwin)
 
 If you have any questions or concerns about the project, you can contact any of the maintainers.
