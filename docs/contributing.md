@@ -68,7 +68,10 @@ Your pull request will be reviewed by the project maintainers, who may ask you t
 
 ## Feedback and Support
 
-If you have any questions, comments, or feedback about the Autotelegram project, please open an issue on GitHub. We also welcome feature requests and bug reports.
+If you have any questions, comments, or feedback about the Autotelegram project, please send them in by;
+
+- [Opening an issue on GitHub](https://github.com/OSCA-Kampala-Chapter/autotelegram/issues/new)
+We also welcome feature requests and bug reports.
 
 If you need help using the tool or contributing to the project, you can;
 
