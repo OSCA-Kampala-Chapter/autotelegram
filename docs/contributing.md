@@ -4,13 +4,13 @@ Thank you for your interest in contributing to the Autotelegram project! By cont
 
 ## Table of Contents
 
-- Code of Conduct
-- How to Contribute
-- Getting Started
-- Development Process
-- Submitting a Pull Request
-- Feedback and Support
-- Maintainers
+- [Code of Conduct](#code-of-conduct)
+- [How to Contribute](#how-to-contribute)
+- [Getting Started](#getting-started)
+- [Development Process](#development-process)
+- [Submitting a Pull Request](#submitting-a-pull-request)
+- [Feedback and Support](#feedback-and-support)
+- [Maintainers](#maintainers)
 
 ## Code of Conduct
 
