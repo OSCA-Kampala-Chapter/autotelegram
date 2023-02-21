@@ -14,7 +14,7 @@ Thank you for your interest in contributing to the Autotelegram project! By cont
 
 ## Code of Conduct
 
-We are committed to providing a friendly, safe, and welcoming environment for all, regardless of gender identity and expression, sexual orientation, disability, mental health, ethnicity, religion, cultural background , seniority or age. All participants are expected to agree with and adhere to our Code of Conduct in all interactions with other contributors.
+We are committed to providing a friendly, safe, and welcoming environment for all, regardless of gender identity and expression, sexual orientation, disability, mental health, ethnicity, religion, cultural background , seniority or age. All participants are expected to agree with and adhere to our [Code of Conduct](./code_of_conduct.md) in all interactions with other contributors.
 
 ## How to Contribute
 
