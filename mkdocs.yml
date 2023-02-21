@@ -106,6 +106,7 @@ nav:
         - voice: "reference/objects/gen/voice.md"
         - webapp: "reference/objects/gen/webapp.md"
   - Contributing: contributing.md
+  - Code of Conduct: code_of_conduct.md
 
 
 
