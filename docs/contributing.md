@@ -70,10 +70,10 @@ Your pull request will be reviewed by the project maintainers, who may ask you t
 
 If you have any questions, comments, or feedback about the Autotelegram project, please open an issue on GitHub. We also welcome feature requests and bug reports.
 
-If you need help using the tool or contributing to the project, you can:
+If you need help using the tool or contributing to the project, you can;
 
 - <a href="https://t.me/oscakampala/1">Join our Telegram group</a> 
-- <a href="https://twitter.com/oscakampala" >Follow OSCA-Kla on twitter</a>
+- <a href="https://twitter.com/oscakampala" >Follow OSCA Kampala on Twitter</a>
 
 ## Maintainers
 The Autotelegram project is maintained by the following contributors:
