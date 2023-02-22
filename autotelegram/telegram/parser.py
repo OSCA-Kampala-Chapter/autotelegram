@@ -114,6 +114,15 @@ class Parser:
         elif (key == "new_chat_members"):
             user_obj = [self._parse_user("user",user) for user in val]
 
+        elif (key == "user_profile_photos"):
+            user_obj = UserProfilePhotos()
+            for k,v in val.items():
+                match k:
+                    case "total_count":
+                        setattr(user_obj,k,v)
+                    case "photos":
+                        photos = [[self._parse_photosize("photo",obj) for obj in v]]
+                        setattr(user_obj,k,photos)
         return user_obj
 
     def _parse_chat (self,key,val) -> Chat:
@@ -166,7 +175,7 @@ class Parser:
         
         return chat_obj
 
-    def _parse_message (self,key:str,val:dict|list) -> Message|MessageEntity|MessageAutoDeleteTimerChanged:
+    def _parse_message (self,key:str,val:dict|list) -> Message|MessageEntity|MessageAutoDeleteTimerChanged|MessageId:
         msg_obj = None
 
         if (key == "message" or
@@ -286,6 +295,10 @@ class Parser:
             msg_obj = MessageAutoDeleteTimerChanged()
             for k,v in val.items():
                 setattr(msg_obj,k,v)
+
+        elif (key == "message_id"):
+            msg_obj = MessageId()
+            setattr(msg_obj,key,val[key])
 
         return msg_obj
 
@@ -1167,10 +1180,10 @@ class Parser:
             root_object (str): The object to use as root and start the parsing process from. Can be "message","chat","user" etc
         """
         match root_object:
-            case "message":
-                return self._parse_message("message",json_data)
-            case "user":
-                return self._parse_user("user",json_data)
+            case ("message"|"message_id") as msg:
+                return self._parse_message(msg,json_data)
+            case ("user"|"user_profile_photos") as usr:
+                return self._parse_user(usr,json_data)
             case _:
                 return self._parse_update(json_data)
 

@@ -18,21 +18,21 @@ class BotAPI:
         """
         url = self.url.add_method("getMe")
         res = await self._get(url=url)
-        return self.parser.parse(res,root_object = "user")
+        return self.parser.parse(res,"user")
 
     async def logout(self) -> None:
         """Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
         """
-        url = self.url.add_method("logout")
-        res = await self._post(url=url)
-        return self.parser.parse(res)
+        url = self.url.add_method("logOut")
+        await self._post(url=url)
+        return True
 
     async def close(self) -> None:
         """Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
         """
         url = self.url.add_method("close")
-        res = await self._post(url=url)
-        return self.parser.parse(res)
+        await self._post(url=url)
+        return True
 
     async def send_message(self, **kwargs) -> None:
         """Use this method to send text messages. On success, the sent Message is returned.
@@ -52,7 +52,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendMessage")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res,root_object = "message")
+        return self.parser.parse(res,"message")
         
 
     async def foward_message(self, **kwargs) -> None:
@@ -66,7 +66,9 @@ class BotAPI:
             disable_notification (bool | None, optional): Sends the message silently. Users will receive a notification with no sound. Defaults to None.
             protect_content (int | None, optional): Protects the contents of the forwarded message from forwarding and saving. Defaults to None.
         """
-        pass
+        url = self.url.add_method("forwardMessage")
+        res = await self._post(url = url,body = kwargs)
+        return self.parser.parse(res,"message")
 
     async def copy_message(self, **kwargs) -> None:
         """Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
@@ -87,7 +89,7 @@ class BotAPI:
         """
         url = self.url.add_method("copyMessage")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message_id")
 
     async def send_photo(self, **kwargs) -> None:
         """Use this method to send photos. On success, the sent Message is returned.
@@ -107,7 +109,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendPhoto")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_audio(self, **kwargs) -> None:
         """Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
@@ -131,7 +133,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendAudio")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_document(self, **kwargs) -> None:
         """Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
@@ -153,7 +155,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendDocument")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_video(self, **kwargs) -> None:
         """Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
@@ -178,7 +180,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendVideo")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_animation(self, **kwargs) -> None:
         """Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
@@ -203,7 +205,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendAnimation")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_voice(self, **kwargs) -> None:
         """Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
@@ -224,7 +226,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendVoice")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_video_note(self, **kwargs) -> None:
         """As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
@@ -247,7 +249,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendVideoNote")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_media_group(self, **kwargs) -> None:
         """Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
@@ -263,7 +265,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendMediaGroup")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return [self.parser.parse(msg,"message") for msg in res]
 
     async def send_location(self, **kwargs) -> None:
         """Use this method to send point on the map. On success, the sent Message is returned.
@@ -285,7 +287,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendLocation")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def edit_message_live_location(self, **kwargs) -> None:
         """Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
@@ -301,6 +303,8 @@ class BotAPI:
             proximity_alert_radius (int | None, optional): The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified. Defaults to None.
             reply_markup (InlineKeyboardMarkup, optional): A JSON-serialized object for a new inline keyboard. Defaults to None.
         """
+        # Needs to implement some logic to test if the message is inline or not.
+        # We should also determine when to return a message object or True
         url = self.url.add_method("editMessageLiveLocation")
         res = await self._post(url = url,body = kwargs)
         return self.parser.parse(res)
@@ -314,6 +318,7 @@ class BotAPI:
             inline_message_id (int | None, optional): Required if chat_id and message_id are not specified. Identifier of the inline message. Defaults to None.
             reply_markup (InlineKeyboardMarkup | None, optional): A JSON-serialized object for a new inline keyboard. Defaults to None.
         """
+        # Try to think about it the same way as `edit_message_live_location``
         url = self.url.add_method("stopMessageLiveLocation")
         res = await self._post(url = url,body = kwargs)
         return self.parser.parse(res)
@@ -340,7 +345,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendVenue")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_contact(self, **kwargs) -> None:
         """Use this method to send phone contacts. On success, the sent Message is returned.
@@ -360,7 +365,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendContact")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_poll(self, **kwargs) -> None:
         """Use this method to send a native poll. On success, the sent Message is returned.
@@ -388,7 +393,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendPoll")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_dice(self, **kwargs) -> None:
         """Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
@@ -405,7 +410,7 @@ class BotAPI:
         """
         url = self.url.add_method("sendDice")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"message")
 
     async def send_chat_action(self, **kwargs) -> None:
         """Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
@@ -415,8 +420,8 @@ class BotAPI:
             action (str): Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
         """
         url = self.url.add_method("sendChatAction")
-        res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        await self._post(url = url,body = kwargs)
+        return True
 
     async def get_user_profile_photos(self, **kwargs) -> None:
         """Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
@@ -428,7 +433,7 @@ class BotAPI:
         """
         url = self.url.add_method("getUserProfilePhotos")
         res = await self._post(url = url,body = kwargs)
-        return self.parser.parse(res)
+        return self.parser.parse(res,"user_profile_photos")
 
     async def get_file(self, **kwargs) -> None:
         """Use this method to get basic information about a file and prepare it for downloading.
@@ -451,6 +456,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("banChatMember")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def unban_chat_member(self, **kwargs) -> bool:
@@ -464,6 +471,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("unbanChatMember")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def restrict_chat_member(self, **kwargs) -> bool:
@@ -478,6 +487,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("restrictChatMember")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def promote_chat_member(self, **kwargs) -> bool:
@@ -502,6 +513,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("promoteChatMember")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def set_chat_administrator_custom_title(self, **kwargs) -> bool:
@@ -515,8 +528,10 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("setChatAdministratorCustomeTitle")
+        await self._post(url = url,body = kwargs)
         return True
-
+    
     async def ban_chat_sender_chat(self, **kwargs) -> bool:
         """Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights.
 
@@ -527,6 +542,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("banChatSenderChat")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def unban_chat_sender_chat(self, **kwargs) -> bool:
@@ -539,6 +556,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("unbanChatSenderChat")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def set_chat_permissions(self, **kwargs) -> bool:
@@ -551,6 +570,8 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        url = self.url.add_method("setChatPermissions")
+        await self._post(url = url,body = kwargs)
         return True
 
     async def export_chat_invite_link(self, **kwargs) -> str:
@@ -562,6 +583,7 @@ class BotAPI:
         Returns:
             str: Returns the new invite link as String on success.
         """
+        # we need to work on this
         return "https"
 
     async def create_chat_invite_link(self, **kwargs) -> ChatInviteLink:
@@ -577,6 +599,7 @@ class BotAPI:
         Returns:
             ChatInviteLink: Returns the new invite link as ChatInviteLink object.
         """
+        # we need to work on this
         return ChatInviteLink()
 
     async def edit_chat_invite_link(self, **kwargs) -> ChatInviteLink:
@@ -593,6 +616,7 @@ class BotAPI:
         Returns:
             ChatInviteLink: Returns the edited invite link as ChatInviteLink object.
         """
+        # we need to work on this
         return ChatInviteLink()
 
     async def revoke_chat_invite_link(self, **kwargs) -> ChatInviteLink:
@@ -605,6 +629,7 @@ class BotAPI:
         Returns:
             ChatInviteLink: Returns the revoked invite link as ChatInviteLink object.
         """
+        # we need to work on this
         return ChatInviteLink()
 
     async def approve_chat_join_request(self, **kwargs) -> bool:
@@ -617,6 +642,7 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        # we need to work on this
         return True
 
     async def decline_chat_join_request(self, **kwargs) -> bool:
@@ -629,6 +655,7 @@ class BotAPI:
         Returns:
             bool: Returns True on success.
         """
+        # we need to work on this
         return True
 
     async def set_chat_photo(self, **kwargs) -> bool:

@@ -44,11 +44,6 @@ class UserProfilePhotos(BaseObject):
         photos (List[List[PhotoSize]]): Requested profile pictures (in up to 4 sizes each)
     """
 
-    __slots__ = (
-        'total_count', 
-        'photos'
-        )
-
     def __init__(self, total_count: int = None, photos: list[list[PhotoSize]] = None) -> None:
         self.total_count = total_count
         self.photos = photos
