@@ -24,7 +24,7 @@ and ease of use in mind. The project is under active development and still in be
 To contribute to the project, please follow along with the issues being posted and also the discussions.
 
 ## **Contributing**
-Autotelegram accepts contributions from the community. To know more about how to contribute, read the[contributing](contributing.md) page.
+Autotelegram accepts contributions from the community. To know more about how to contribute, read through the [contributing page](contributing.md).
 
 ## **License**
 
