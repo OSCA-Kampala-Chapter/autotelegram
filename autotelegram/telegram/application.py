@@ -1,5 +1,6 @@
 
 import asyncio
+from starlette.requests import Request
 from autotelegram.telegram.context import Context
 
 __all__ = ("BaseApp","PollingApp","WebhookApp")
@@ -110,3 +111,36 @@ class PollingApp(BaseApp):
         """        
         asyncio.run(self._runner(callback,wait_for))
 
+
+class WebhookApp (BaseApp):
+    """
+    Implementation of the webhook update method of the bot application.
+    The webhook app is implemented as an ASGI application and can be run with any
+    ASGI compliant server such as Daphne, Uvicorn or Hypercorn.
+
+    The constructor takes in two arguments:
+    Parameters:
+        context (Context): The bot context
+        callback (Async function): A callback async function to call for every new update received
+    """
+
+    def __init__ (self,context,callback):
+        
+        super(WebhookApp,self).__init__(context)
+        self._callback = callback
+
+    async def __call__ (self,scope,recv,send):
+        request = Request(scope,recv)
+        update = await request.json()
+
+        try:
+            await self._process_update(update,self._callback)
+
+        except Exception as exp:
+            exp_type = type(exp)
+            try:
+                handler = self._errorhandlers[exp_type]
+            except KeyError:
+                raise exp
+            else:
+                handler(exp)
