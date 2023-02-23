@@ -54,6 +54,7 @@ nav:
     - How autotelegram works: "user-guide/how-it-works.md"
     - Making requests: "user-guide/making-requests.md"
     - Working with messages: "user-guide/messages.md"
+    - Using Webhooks: "user-guide/webhooks.md"
   - Architecture: architecture.md
   - Reference:
     - application: "reference/application.md"
